@@ -1,0 +1,36 @@
+{
+  "pages":[
+    "pages/team/team",
+    "pages/settings/settings",
+    "pages/team/create/create",
+    "pages/team/join/join",
+    "pages/team/myteam/myteam",
+    "pages/settings/clause/clause",
+    "pages/settings/help/help",
+    "pages/settings/feedback/feedback"
+  ],
+  "tabBar": {
+    "backgroundColor" : "#F7F7FA",
+    "borderStyle": "white",
+    "list": [
+    {
+      "pagePath": "pages/team/team",
+      "text": "队伍",
+      "iconPath": "images/team.png",
+      "selectedIconPath": "images/team-selected.png"
+    },
+    {
+      "pagePath": "pages/settings/settings",
+      "text": "设置",
+      "iconPath": "images/settings.png",
+      "selectedIconPath": "images/settings-selected.png"
+    }]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "backgroundColor": "#EFEFF4",
+    "navigationBarBackgroundColor": "#2C2D31",
+    "navigationBarTitleText": "春骑",
+    "navigationBarTextStyle":"white"
+  }
+}
