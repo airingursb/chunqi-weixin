@@ -4,7 +4,7 @@
   <view class="input-container">
     <input class="input-search" bindconfirm="search" placeholder="请输入队伍邀请码" type="text"/>
   </view>
-  <view class="button-search" bindtap="help">
+  <view class="button-search" bindtap="join">
     <text class="text-search">确定</text>
   </view>
 </view>

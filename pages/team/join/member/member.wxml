@@ -1,0 +1,52 @@
+<view class="container">
+    <text class="text-title">请填写报名表</text>
+    <view class="section">
+        <label>姓名</label>
+        <input placeholder="请输入姓名"/>
+    </view>
+    <view class="section">
+        <label>性别</label>
+        <radio-group style="margin-left: 120rpx" bindchange="sexChange">
+            <radio value="male" checked="{{item.checked}}"/>男
+            <radio value="female" checked="{{item.checked}}"/>女
+        </radio-group>
+    </view>
+    <view class="section">
+        <label>身份证号</label>
+        <input placeholder="请输入身份证号"/>
+    </view>
+    <view class="section">
+        <label>手机号</label>
+        <input placeholder="请输入手机号"/>
+    </view>
+    <view class="section">
+        <label>紧急联系人</label>
+        <input placeholder="请输入紧急联系人"/>
+    </view>
+    <view class="section">
+        <label>紧急联系人号码</label>
+        <input placeholder="请输入紧急联系人号码"/>
+    </view>
+    <view class="section">
+        <label>衣服尺码</label>
+        <radio-group style="margin-left: 10rpx; font-size:20rpx;" bindchange="sexChange">
+            <radio value="s" checked="{{item.checked}}"/>S
+            <radio value="m" checked="{{item.checked}}"/>M
+            <radio value="l" checked="{{item.checked}}"/>L
+            <radio value="xl" checked="{{item.checked}}"/>XL
+            <radio value="xxl" checked="{{item.checked}}"/>XXL
+            <radio value="xxxl" checked="{{item.checked}}"/>XXXL
+        </radio-group>
+    </view>
+    <view class="section">
+        <label>兴趣爱好</label>
+        <input placeholder="请输入兴趣爱好"/>
+    </view>
+    <view class="section">
+        <label>职业</label>
+        <input placeholder="请输入职业"/>
+    </view>
+    <view class="button-search" bindtap="join">
+        <text class="text-search">提交报名表</text>
+    </view>
+</view>

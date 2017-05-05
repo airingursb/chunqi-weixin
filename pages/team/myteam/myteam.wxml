@@ -1,12 +1,12 @@
 <view class="container">
   <image class="logo" src="/images/search-logo.png"></image>
   <text class="name">春骑队伍</text>
-  <view class="items-container">
+  <view class="items">
     <view class="item">
         <image class="item-image" src="{{userInfo.avatarUrl}}"></image>
         <label class="item-name">联系人</label>
-        <image class="item-icon" src="/images/finish-icon.png"></image>
-        <image class="item-next" src="/images/next-icon.png"></image>
+        <image class="item-icon" src="/images/finish-icon.png" bindtap="showButton"></image>
+        <image class="item-next" src="/images/next-icon.png" bindtap="showButton"></image>
     </view>
   </view>
 </view>

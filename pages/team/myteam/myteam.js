@@ -1,35 +1,64 @@
 var app = getApp()
+var str = ''
 
 Page({
   data:{
     userInfo: {}
   },
   onLoad:function(options){
-    // 生命周期函数--监听页面加载   
     console.log('onLoad')
     var that = this
-    //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
-      //更新数据
       that.setData({
         userInfo: userInfo
       })
+      str = userInfo.nickName + '邀请你加入春骑'
     })
   },
-  onReady:function(){
-    // 生命周期函数--监听页面初次渲染完成
-    
-  },
-  onShow:function(){
-    // 生命周期函数--监听页面显示
-    
-  },
   onShareAppMessage: function() {
-    // 用户点击右上角分享
+    console.log(str)
     return {
-      title: 'title', // 分享标题
-      desc: 'desc', // 分享描述
-      path: 'path' // 分享路径
+      title: str, 
+      desc: '邀请码：', 
+      path: 'path' 
     }
+  },
+  showButton: function() {
+    wx.showActionSheet({
+      itemList: ['查看信息', '踢出队员'],
+      success: function(res) {
+        console.log(res.tapIndex)
+        if(res.tapIndex == 0) {
+          wx.navigateTo({
+            url: './member/member',
+            success: function (res) {
+              // success
+            },
+            fail: function () {
+              // fail
+            },
+            complete: function () {
+              // complete
+            }
+          })
+        }
+        if(res.tapIndex == 1) {
+          wx.showModal({
+            title: '提示',
+            content: '您确定要踢出该队员吗？',
+            success: function(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
+      },
+      fail: function(res) {
+        console.log(res.errMsg)
+      }
+    })
   }
 })

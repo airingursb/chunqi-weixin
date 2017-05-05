@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.item {
+  margin-top: 40rpx;
+  margin-left: 30rpx;
+  width: 100%;
+}
+
+.button-container {
+  margin-top: 120rpx
+}
+
+.button-pass {
+  margin-top: 100rpx;
+  display: flex;
+  flex-direction: column;
+  width: 360rpx;
+  height: 70rpx;
+  border: 2rpx solid #09BB07;
+  border-radius: 10rpx;
+  align-items: center;
+}
+
+.text-pass {
+  margin: auto;
+  font-family: Songti TC;
+  font-size: 32rpx;
+  color: #09BB07;
+}
+
+.button-nopass {
+  margin-top: 35rpx;
+  display: flex;
+  flex-direction: column;
+  width: 360rpx;
+  height: 70rpx;
+  border: 2rpx solid #F76260;
+  border-radius: 10rpx;
+  align-items: center;
+}
+
+.text-nopass {
+  margin: auto;
+  font-family: Songti TC;
+  font-size: 32rpx;
+  color: #F76260;
+}

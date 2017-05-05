@@ -22,18 +22,10 @@ Page({
       path: 'path' // 分享路径
     }
   },
-  join: function() {
-    wx.navigateTo({
-      url: './member/member',
-      success: function(res){
-        // success
-      },
-      fail: function(res) {
-        // fail
-      },
-      complete: function(res) {
-        // complete
-      }
-    })
+  pass: function() {
+
+  },
+  nopass: function() {
+      
   }
 })

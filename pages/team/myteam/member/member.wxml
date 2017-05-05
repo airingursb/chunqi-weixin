@@ -1,0 +1,17 @@
+<view class="container">
+    <view class="item">姓名：</view>
+    <view class="item">性别：</view>
+    <view class="item">身份证号：</view>
+    <view class="item">手机号：</view>
+    <view class="item">紧急联系人：</view>
+    <view class="item">紧急联系人号码：</view>
+    <view class="item">衣服尺码：</view>
+    <view class="item">兴趣爱好：</view>
+    <view class="item">职业：</view>
+    <view class="button-pass" bindtap="pass">
+      <text class="text-pass">审核通过</text>
+    </view>
+    <view class="button-nopass" bindtap="nopass">
+      <text class="text-nopass">审核驳回</text>
+    </view>
+</view>
