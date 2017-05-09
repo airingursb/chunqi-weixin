@@ -1,3 +1,5 @@
+var API = require('../../../../utils/config').API;
+
 Page({
   data:{
     
@@ -26,6 +28,6 @@ Page({
 
   },
   nopass: function() {
-      
+
   }
 })

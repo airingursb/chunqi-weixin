@@ -47,6 +47,6 @@
         <input placeholder="请输入职业" bindinput="inputWork"/>
     </view>
     <view class="button-search" bindtap="join">
-        <text class="text-search">提交报名表</text>
+        <text class="text-search">提交信息表</text>
     </view>
 </view>

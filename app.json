@@ -3,6 +3,7 @@
     "pages/team/team",
     "pages/settings/settings",
     "pages/team/create/create",
+    "pages/team/create/member/member",
     "pages/team/join/join",
     "pages/team/join/member/member",
     "pages/team/myteam/myteam",

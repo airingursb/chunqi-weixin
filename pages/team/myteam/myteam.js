@@ -1,3 +1,4 @@
+var API = require('../../../utils/config').API;
 var app = getApp()
 var str = ''
 
@@ -13,6 +14,23 @@ Page({
         userInfo: userInfo
       })
       str = userInfo.nickName + '邀请你加入春骑'
+    })
+
+    wx.request({
+      url: API + 'show_team?team_id=' + wx.getStorageSync('team_id'),
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res){
+        // success
+        console.log(res);
+      },
+      fail: function(res) {
+        // fail
+      },
+      complete: function(res) {
+        // complete
+      }
     })
   },
   onShareAppMessage: function() {

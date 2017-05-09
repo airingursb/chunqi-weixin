@@ -2,7 +2,7 @@
   <image class="logo" src="/images/search-logo.png"></image>
   <text class="name">加入队伍</text>
   <view class="input-container">
-    <input class="input-search" bindconfirm="search" placeholder="请输入队伍邀请码" type="text"/>
+    <input class="input-search" bindinput="inputTeam" placeholder="请输入队伍邀请码" type="text"/>
   </view>
   <view class="button-search" bindtap="join">
     <text class="text-search">确定</text>

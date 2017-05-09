@@ -7,8 +7,6 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    //wilddog.initializeApp(config)
-
   },
   getUserInfo:function(cb){
     var that = this

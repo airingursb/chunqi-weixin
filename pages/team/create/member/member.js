@@ -86,15 +86,15 @@ Page({
 
     } else {
       wx.request({
-        url: API + 'add_user?name=' + this.data.name + '&phone=' + this.data.phone + '&id_card=' + this.data.id_card + '&sex=' + this.data.sex + '&shit_size=' + this.data.shit_size + '&sos_name=' + this.data.sos_name + '&sos_phone=' + this.data.sos_phone + '&like=' + this.data.like + '&work=' + this.data.work + '&share_id=' + wx.getStorageSync('share_id') + '&nick_name=' + wx.getStorageSync('nick_name') + '&face_url=' + wx.getStorageSync('face_url'),
+        url: API + 'add_manager?name=' + this.data.name + '&phone=' + this.data.phone + '&id_card=' + this.data.id_card + '&sex=' + this.data.sex + '&shit_size=' + this.data.shit_size + '&sos_name=' + this.data.sos_name + '&sos_phone=' + this.data.sos_phone + '&like=' + this.data.like + '&work=' + this.data.work + '&share_id=' + wx.getStorageSync('share_id') + '&nick_name=' + wx.getStorageSync('nick_name') + '&face_url=' + wx.getStorageSync('face_url'),
         data: {},
         method: 'GET',
         success: function (res) {
           console.log(res)
-          var team_id = res.data.data.teamId
+          wx.setStorageSync('team_id', res.data.data.teamId)
           wx.showModal({
             title: '提示',
-            content: '加入成功！！',
+            content: '创建成功！！',
             showCancel: false,
             success: function (res) {
               if (res.confirm) {
@@ -102,8 +102,8 @@ Page({
                 wx.navigateBack({
                   delta: 2, // 回退前 delta(默认为1) 页面
                   success: function (res) {
-                    wx.setStorageSync('role', 3);
-                    wx.setStorageSync('team_id', team_id);
+                    wx.setStorageSync('role', 4);
+                    
                   },
                   fail: function (res) {
                     // fail
