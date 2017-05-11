@@ -1,4 +1,5 @@
 var app = getApp()
+var API = require('../../utils/config').API;
 
 Page({
   data: {
@@ -10,7 +11,23 @@ Page({
       wx.setStorageSync('nick_name', userInfo.nickName);
       wx.setStorageSync('face_url', userInfo.avatarUrl);
     })
-    
+    var token = wx.getStorageSync('token') || 0
+    wx.request({
+      url: API + 'get_user?token=' + token,
+      method: 'GET',
+      success: function(res) {
+        console.log(res);
+        if(res.data.status == 0) {
+          wx.setStorageSync('team_id', res.data.data.teamId);
+          wx.setStorageSync('role', res.data.data.role);
+          wx.setStorageSync('user_id', res.data.data.id);
+          wx.setStorageSync('token', res.data.data.token);
+        }else{
+          wx.setStorageSync('role', 0);
+          wx.setStorageSync('token', 0);
+        }
+      }
+    })
   },
   onShareAppMessage: function () {
     // 用户点击右上角分享
@@ -23,16 +40,7 @@ Page({
   showCreate: function () {
     if (wx.getStorageSync('role') == undefined || wx.getStorageSync('role') == '') {
       wx.navigateTo({
-        url: './create/create',
-        success: function (res) {
-          // success
-        },
-        fail: function () {
-          // fail
-        },
-        complete: function () {
-          // complete
-        }
+        url: './create/create'
       })
     } else if (wx.getStorageSync('role') == 4) {
       wx.showModal({
@@ -41,7 +49,7 @@ Page({
         showCancel: false,
         success: function (res) {
           if (res.confirm) {
-            console.log('用户点击确定')
+            console.log('用户点击确定');
           }
         }
       })

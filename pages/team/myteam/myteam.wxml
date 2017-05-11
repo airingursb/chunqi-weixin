@@ -1,12 +1,15 @@
 <view class="container">
   <image class="logo" src="/images/search-logo.png"></image>
-  <text class="name">春骑队伍</text>
+  <text class="name">{{team.name}}</text>
+  <text class="share">邀请码：{{team.share_id}}</text>
   <view class="items">
-    <view class="item">
-        <image class="item-image" src="{{userInfo.avatarUrl}}"></image>
-        <label class="item-name">联系人</label>
-        <image class="item-icon" src="/images/finish-icon.png" bindtap="showButton"></image>
-        <image class="item-next" src="/images/next-icon.png" bindtap="showButton"></image>
+    <view class="item" wx:for="{{items}}" wx:for-index="idx" wx:for-item="item">
+        <image class="item-image" src="{{item.face_url}}"></image>
+        <label class="item-name">{{item.nick_name}}</label>
+        <image class="item-icon" src="/images/finish-icon.png" bindtap="showButton" wx:if="{{item.role==1 || item.role==4}}" data-id="{{item.user_id}}"></image>
+        <image class="item-icon" src="/images/warning-icon.png" bindtap="showButton" wx:if="{{item.role==2 || item.role==0}}" data-id="{{item.user_id}}"></image>
+        <image class="item-icon" src="/images/waiting-icon.png" bindtap="showButton" wx:if="{{item.role==3}}" data-id="{{item.user_id}}"></image>
+        <image class="item-next" src="/images/next-icon.png"></image>
     </view>
   </view>
 </view>

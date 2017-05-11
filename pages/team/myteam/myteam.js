@@ -4,7 +4,9 @@ var str = ''
 
 Page({
   data:{
-    userInfo: {}
+    userInfo: {},
+    items: [],
+    team: {}
   },
   onLoad:function(options){
     console.log('onLoad')
@@ -17,19 +19,26 @@ Page({
     })
 
     wx.request({
+      url: API + 'get_team?team_id=' + wx.getStorageSync('team_id'),
+      data: {},
+      method: 'GET',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          team: res.data.data
+        })
+      }
+    })
+
+    wx.request({
       url: API + 'show_team?team_id=' + wx.getStorageSync('team_id'),
       data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      method: 'GET',
       success: function(res){
-        // success
         console.log(res);
-      },
-      fail: function(res) {
-        // fail
-      },
-      complete: function(res) {
-        // complete
+        that.setData({
+          items: res.data.data
+        })
       }
     })
   },
@@ -37,27 +46,21 @@ Page({
     console.log(str)
     return {
       title: str, 
-      desc: '邀请码：', 
+      desc: '邀请码：' + this.data.team.share_id, 
       path: 'path' 
     }
   },
-  showButton: function() {
+  showButton: function(e) {
+    var user_id = e.target.dataset.id;
+    console.log('user_id ' + user_id)
     wx.showActionSheet({
       itemList: ['查看信息', '踢出队员'],
       success: function(res) {
         console.log(res.tapIndex)
+        console.log('user_id ' + user_id)
         if(res.tapIndex == 0) {
           wx.navigateTo({
-            url: './member/member',
-            success: function (res) {
-              // success
-            },
-            fail: function () {
-              // fail
-            },
-            complete: function () {
-              // complete
-            }
+            url: './member/member?user_id=' + user_id
           })
         }
         if(res.tapIndex == 1) {
@@ -67,6 +70,16 @@ Page({
             success: function(res) {
               if (res.confirm) {
                 console.log('用户点击确定')
+                wx.request({
+                  url: API + 'remove_user?user_id=' + user_id,
+                  method: 'GET',
+                  success: function(res) {
+                    console.log(res);
+                    wx.navigateBack({
+                      delta: 1,
+                    })
+                  }
+                })
               } else if (res.cancel) {
                 console.log('用户点击取消')
               }

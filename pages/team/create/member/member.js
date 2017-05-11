@@ -82,8 +82,6 @@ Page({
           }
         }
       })
-
-
     } else {
       wx.request({
         url: API + 'add_manager?name=' + this.data.name + '&phone=' + this.data.phone + '&id_card=' + this.data.id_card + '&sex=' + this.data.sex + '&shit_size=' + this.data.shit_size + '&sos_name=' + this.data.sos_name + '&sos_phone=' + this.data.sos_phone + '&like=' + this.data.like + '&work=' + this.data.work + '&share_id=' + wx.getStorageSync('share_id') + '&nick_name=' + wx.getStorageSync('nick_name') + '&face_url=' + wx.getStorageSync('face_url'),
@@ -92,33 +90,24 @@ Page({
         success: function (res) {
           console.log(res)
           wx.setStorageSync('team_id', res.data.data.teamId)
+          var token = res.data.data.token
           wx.showModal({
             title: '提示',
-            content: '创建成功！！',
+            content: '创建成功！！邀请码是：' + wx.getStorageSync('share_id'),
             showCancel: false,
             success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定')
                 wx.navigateBack({
-                  delta: 2, // 回退前 delta(默认为1) 页面
+                  delta: 2,
                   success: function (res) {
                     wx.setStorageSync('role', 4);
-                    
-                  },
-                  fail: function (res) {
-                    // fail
-                  },
-                  complete: function (res) {
-                    // complete
+                    wx.setStorageSync('token', token);      
                   }
                 })
               }
             }
           })
-        },
-        fail: function () {
-        },
-        complete: function () {
         }
       })
     }

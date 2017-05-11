@@ -92,6 +92,7 @@ Page({
         success: function (res) {
           console.log(res)
           var team_id = res.data.data.teamId
+          var token = res.data.data.token
           wx.showModal({
             title: '提示',
             content: '加入成功！！',
@@ -100,10 +101,11 @@ Page({
               if (res.confirm) {
                 console.log('用户点击确定')
                 wx.navigateBack({
-                  delta: 2, // 回退前 delta(默认为1) 页面
+                  delta: 2,
                   success: function (res) {
                     wx.setStorageSync('role', 3);
                     wx.setStorageSync('team_id', team_id);
+                    wx.setStorageSync('token', token);
                   },
                   fail: function (res) {
                     // fail

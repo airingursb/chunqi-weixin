@@ -20,6 +20,13 @@
   color: #585858;
 }
 
+.share {
+  margin-top: 28rpx;
+  font-family: Songti SC;
+  font-size: 28rpx;
+  color: #585858;
+}
+
 .items {
   margin-top: 74rpx;
   width: 100%;
@@ -44,8 +51,9 @@
 .item-name {
   margin-top: 34rpx;
   margin-left: 20rpx;
-  margin-right: 428rpx;
+  margin-right: 400rpx;
   font-size: 34rpx;
+  width: 144rpx;
 }
 
 .item-icon {
