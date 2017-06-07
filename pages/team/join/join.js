@@ -48,6 +48,9 @@ Page({
         url: API + 'join_team?share_id=' + this.data.share_id,
         data: {},
         method: 'GET',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
         success: function (res) {
           console.log(res)
           wx.setStorageSync('share_id', that.data.share_id)

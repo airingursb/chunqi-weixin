@@ -23,7 +23,7 @@ Page({
     })
   },
   createTeam: function () {
-
+    var that = this;
     if (this.data.team_name == '' || this.data.team_name == undefined) {
       wx.showModal({
         title: '提示',
@@ -36,11 +36,15 @@ Page({
         }
       })
     } else {
-      var that = this;
       wx.request({
-        url: API + 'create_team?team_name=' + this.data.team_name,
-        data: {},
+        url: API + 'create_team',
+        data: {
+          team_name: that.data.team_name
+        },
         method: 'GET',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded" 
+        },
         success: function (res) {
           console.log(res)
           that.setData({

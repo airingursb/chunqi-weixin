@@ -12,6 +12,9 @@ Page({
     wx.request({
       url: API + 'show_user?user_id=' + user_id,
       method: 'GET',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       success: function(res){
         console.log(res)
         that.setData({
@@ -33,6 +36,9 @@ Page({
     wx.request({
       url: API + 'pass_user?user_id=' + user_id,
       method: 'GET',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       success: function(res) {
         console.log(res)
         wx.showModal({
@@ -65,6 +71,9 @@ Page({
     wx.request({
       url: API + 'nopass_user?user_id=' + user_id,
       method: 'GET',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       success: function (res) {
         console.log(res)
         wx.showModal({

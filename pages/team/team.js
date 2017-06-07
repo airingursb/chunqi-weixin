@@ -11,10 +11,13 @@ Page({
       wx.setStorageSync('nick_name', userInfo.nickName);
       wx.setStorageSync('face_url', userInfo.avatarUrl);
     })
-    var token = wx.getStorageSync('token') || 0
+    var openid = wx.getStorageSync('openid')
     wx.request({
-      url: API + 'get_user?token=' + token,
+      url: API + 'get_user?openid=' + openid,
       method: 'GET',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       success: function(res) {
         console.log(res);
         if(res.data.status == 0) {

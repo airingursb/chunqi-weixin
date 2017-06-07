@@ -89,6 +89,9 @@ Page({
         url: API + 'add_user?name=' + this.data.name + '&phone=' + this.data.phone + '&id_card=' + this.data.id_card + '&sex=' + this.data.sex + '&shit_size=' + this.data.shit_size + '&sos_name=' + this.data.sos_name + '&sos_phone=' + this.data.sos_phone + '&like=' + this.data.like + '&work=' + this.data.work + '&share_id=' + wx.getStorageSync('share_id') + '&nick_name=' + wx.getStorageSync('nick_name') + '&face_url=' + wx.getStorageSync('face_url'),
         data: {},
         method: 'GET',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
         success: function (res) {
           console.log(res)
           var team_id = res.data.data.teamId

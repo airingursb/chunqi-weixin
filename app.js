@@ -1,12 +1,52 @@
 //app.js
-
+var API = require('./utils/config').API;
 App({
   onLaunch: function () {
-    //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    wx.checkSession({
+      success: function() {
+        wx.login({
+          success: function (res) {
+            if (res.code) {
+              wx.request({
+                url: API + 'login',
+                method: 'GET',
+                data: {
+                  code: res.code
+                },
+                success: function (res) {
+                  console.log(res);
+                  console.log(res.data.openid);
+                  wx.setStorageSync('openid', res.data.openid)
+                }
+              })
+            }
+          }
+        })
+      },
+      fail: function() {
+        wx.login({
+          success: function (res) {
+            if (res.code) {
+              wx.request({
+                url: API + 'login',
+                method: 'GET',
+                data: {
+                  code: res.code
+                },
+                success: function (res) {
+                  console.log(res);
+                  console.log(res.data.openid);
+                  wx.setStorageSync('openid', res.data.openid)
+                }
+              })
+            }
+          }
+        })
+      }
+    })
   },
   getUserInfo:function(cb){
     var that = this

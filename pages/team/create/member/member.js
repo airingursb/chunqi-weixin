@@ -63,6 +63,7 @@ Page({
     })
   },
   join: function () {
+    console.log('clike join');
     if (this.data.name == '' || this.data.name == undefined
       || this.data.id_card == '' || this.data.id_card == undefined
       || this.data.phone == '' || this.data.phone == undefined
@@ -83,10 +84,15 @@ Page({
         }
       })
     } else {
+      var that = this;
+      var url = API + 'add_manager?name=' + this.data.name + '&phone=' + this.data.phone + '&id_card=' + this.data.id_card + '&sex=' + this.data.sex + '&shit_size=' + this.data.shit_size + '&sos_name=' + this.data.sos_name + '&sos_phone=' + this.data.sos_phone + '&like=' + this.data.like + '&work=' + this.data.work + '&share_id=' + wx.getStorageSync('share_id') + '&nick_name=' + wx.getStorageSync('nick_name') + '&face_url=' + wx.getStorageSync('face_url') + '&openid=' + wx.getStorageSync('openid')
       wx.request({
-        url: API + 'add_manager?name=' + this.data.name + '&phone=' + this.data.phone + '&id_card=' + this.data.id_card + '&sex=' + this.data.sex + '&shit_size=' + this.data.shit_size + '&sos_name=' + this.data.sos_name + '&sos_phone=' + this.data.sos_phone + '&like=' + this.data.like + '&work=' + this.data.work + '&share_id=' + wx.getStorageSync('share_id') + '&nick_name=' + wx.getStorageSync('nick_name') + '&face_url=' + wx.getStorageSync('face_url'),
+        url: url,
         data: {},
         method: 'GET',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
         success: function (res) {
           console.log(res)
           wx.setStorageSync('team_id', res.data.data.teamId)
