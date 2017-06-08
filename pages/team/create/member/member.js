@@ -5,18 +5,6 @@ Page({
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
   },
-  onReady: function () {
-    // 页面渲染完成
-  },
-  onShow: function () {
-    // 页面显示
-  },
-  onHide: function () {
-    // 页面隐藏
-  },
-  onUnload: function () {
-    // 页面关闭
-  },
   sexChange: function (e) {
     this.setData({
       sex: e.detail.value
@@ -76,6 +64,39 @@ Page({
       wx.showModal({
         title: '提示',
         content: '请填完信息表！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      })
+    } else if (this.data.id_card.length!==18){
+      wx.showModal({
+        title: '提示',
+        content: '身份证格式不正确！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      })
+    } else if (this.data.phone.length !== 11) {
+      wx.showModal({
+        title: '提示',
+        content: '手机号格式不正确！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      })
+    } else if (this.data.sos_phone.length !== 11) {
+      wx.showModal({
+        title: '提示',
+        content: '紧急联系人手机号格式不正确！',
         showCancel: false,
         success: function (res) {
           if (res.confirm) {

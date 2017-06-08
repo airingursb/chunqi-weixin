@@ -9,12 +9,14 @@
 
 input {
   margin: auto;
+  font-size: 30rpx
 }
 
 label {
-  margin-left: 30rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  width: 160rpx;
 }
-
 .text-title {
   margin-top: 34rpx;
   margin-left: 34rpx;

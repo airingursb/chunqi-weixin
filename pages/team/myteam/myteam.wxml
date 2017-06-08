@@ -1,5 +1,5 @@
 <view class="container">
-  <image class="logo" src="/images/search-logo.png"></image>
+  <image class="logo" src="/images/search-logo.png" bindtap="showDeleteButton"></image>
   <text class="name">{{team.name}}</text>
   <text class="share">邀请码：{{team.share_id}}</text>
   <view class="items">

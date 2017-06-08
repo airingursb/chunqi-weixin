@@ -47,22 +47,30 @@ Page({
         },
         success: function (res) {
           console.log(res)
-          that.setData({
-            share_id: res.data.data.share_id,
-          })
-          wx.setStorageSync('share_id', res.data.data.share_id)
-          wx.navigateTo({
-            url: './member/member',
-            success: function(res){
-              // success
-            },
-            fail: function(res) {
-              // fail
-            },
-            complete: function(res) {
-              // complete
-            }
-          })
+          if(res.data.status == 0) {
+            that.setData({
+              share_id: res.data.data.share_id,
+            })
+            wx.setStorageSync('share_id', res.data.data.share_id)
+            wx.navigateTo({
+              url: './member/member',
+              success: function (res) {
+                // success
+              },
+              fail: function (res) {
+                // fail
+              },
+              complete: function (res) {
+                // complete
+              }
+            })
+          } else {
+            wx.showModal({
+              title: '提醒',
+              content: '队伍名已被使用，请更换',
+            })
+          }
+          
         },
         fail: function () {
         },

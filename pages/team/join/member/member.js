@@ -84,6 +84,39 @@ Page({
       })
 
 
+    } else if (this.data.id_card.length !== 18) {
+      wx.showModal({
+        title: '提示',
+        content: '身份证格式不正确！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      })
+    } else if (this.data.phone.length !== 11) {
+      wx.showModal({
+        title: '提示',
+        content: '手机号格式不正确！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      })
+    } else if (this.data.sos_phone.length !== 11) {
+      wx.showModal({
+        title: '提示',
+        content: '紧急联系人手机号格式不正确！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      })
     } else {
       wx.request({
         url: API + 'add_user?name=' + this.data.name + '&phone=' + this.data.phone + '&id_card=' + this.data.id_card + '&sex=' + this.data.sex + '&shit_size=' + this.data.shit_size + '&sos_name=' + this.data.sos_name + '&sos_phone=' + this.data.sos_phone + '&like=' + this.data.like + '&work=' + this.data.work + '&share_id=' + wx.getStorageSync('share_id') + '&nick_name=' + wx.getStorageSync('nick_name') + '&face_url=' + wx.getStorageSync('face_url'),

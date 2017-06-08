@@ -6,7 +6,49 @@ Page({
 
   },
   onLoad: function (options) {
-    // 生命周期函数--监听页面加载
+    
+    wx.checkSession({
+      success: function () {
+        wx.login({
+          success: function (res) {
+            if (res.code) {
+              wx.request({
+                url: API + 'login',
+                method: 'GET',
+                data: {
+                  code: res.code
+                },
+                success: function (res) {
+                  console.log(res);
+                  console.log(res.data.openid);
+                  wx.setStorageSync('openid', res.data.openid)
+                }
+              })
+            }
+          }
+        })
+      },
+      fail: function () {
+        wx.login({
+          success: function (res) {
+            if (res.code) {
+              wx.request({
+                url: API + 'login',
+                method: 'GET',
+                data: {
+                  code: res.code
+                },
+                success: function (res) {
+                  console.log(res);
+                  console.log(res.data.openid);
+                  wx.setStorageSync('openid', res.data.openid)
+                }
+              })
+            }
+          }
+        })
+      }
+    })
     app.getUserInfo(function (userInfo) {
       wx.setStorageSync('nick_name', userInfo.nickName);
       wx.setStorageSync('face_url', userInfo.avatarUrl);

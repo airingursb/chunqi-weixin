@@ -69,26 +69,34 @@ Page({
   nopass: function() {
     var user_id = this.data.user.id
     wx.request({
-      url: API + 'nopass_user?user_id=' + user_id,
+      url: API + 'remove_user?user_id=' + user_id + '&openid=' + wx.getStorageSync('openid'),
       method: 'GET',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
         console.log(res)
-        wx.showModal({
-          title: '提示',
-          content: '确定该队员审核不通过！',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-              wx.navigateBack({
-                delta: 2,
-              })
+        if(res.data.status == 0) {
+          wx.showModal({
+            title: '提示',
+            content: '确定该队员审核不通过！',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+                wx.navigateBack({
+                  delta: 2,
+                })
+              }
             }
-          }
-        })
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '队长不能移除自己',
+            showCancel: false,
+          })
+        }
       }
     })
   }

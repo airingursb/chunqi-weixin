@@ -53,7 +53,55 @@ Page({
     return {
       title: str, 
       desc: '邀请码：' + this.data.team.share_id, 
-      path: 'path' 
+      path: '/pages/team/team' 
+    }
+  },
+  showDeleteButton: function(e) {
+    if(wx.getStorageSync('role') == 4) {
+      wx.showModal({
+        title: '提示',
+        content: '您确定要解散队伍吗？',
+        success: function(res) {
+          if(res.confirm) {
+            wx.request({
+              url: API + 'delete_team?team_id=' + wx.getStorageSync('team_id'),
+              method: 'GET',
+              success: function(res) {
+                wx.navigateBack({
+                  delta: 1,
+                  success: function (res) {
+                    wx.login({
+                      success: function (res) {
+                        if (res.code) {
+                          wx.request({
+                            url: API + 'login',
+                            method: 'GET',
+                            data: {
+                              code: res.code
+                            },
+                            success: function (res) {
+                              console.log(res);
+                              console.log(res.data.openid);
+                              wx.setStorageSync('openid', res.data.openid)
+                              wx.setStorageSync('role', 0)
+                            }
+                          })
+                        }
+                      }
+                    })
+                  },
+                  fail: function (res) {
+                    // fail
+                  },
+                  complete: function (res) {
+                    // complete
+                  }
+                })
+              }
+            })
+          }
+        }
+      })
     }
   },
   showButton: function(e) {
