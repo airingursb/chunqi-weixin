@@ -1,7 +1,9 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/team/team",
     "pages/settings/settings",
+    "pages/team/clause",
     "pages/team/create/create",
     "pages/team/create/member/member",
     "pages/team/join/join",

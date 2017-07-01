@@ -1,15 +1,19 @@
 <view class="container">
-  <image class="logo" src="/images/search-logo.png"></image>
-  <text class="name">春骑报名</text>
+  <view bindtap="showClause">
+    <image class="logo" src="/images/chunqibanner.png"></image>
+  </view>
   <view class="button-container">
-    <view class="button-search" bindtap="showCreate">
-      <text class="text-search">创建队伍</text>
+    <view bindtap="showCreate">
+      <image class="image-search" src="/images/cjdw.png">
+      </image>
     </view>
-    <view class="button-search" bindtap="showJoin">
-      <text class="text-search">加入队伍</text>
+    <view bindtap="showJoin">
+      <image class="image-search" src="/images/jrdw.png">
+      </image>
     </view>
-    <view class="button-search" bindtap="showMyteam">
-      <text class="text-search">我的队伍</text>
+    <view bindtap="showMyteam">
+      <image class="image-search" src="/images/wddw.png">
+      </image>
     </view>
   </view>
 </view>

@@ -1,0 +1,23 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  height:1180rpx;
+  -moz-background-size:100% 100%;
+  background: url('http://airing.ursb.me/image/cover/UI-3.jpg');
+  background-size: 100% 100%;
+}
+
+.txtContainer {
+  margin-top: 50rpx;
+}
+
+.txtTitle {
+  text-indent:64rpx;
+  font-size: 36rpx;
+  font-family: 'lishu'
+}
+
+.txtContent {
+  text-indent:54rpx;
+  font-size: 28rpx;
+}

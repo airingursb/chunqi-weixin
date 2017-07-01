@@ -2,15 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
   justify-content: space-between;
-  box-sizing: border-box;
+  height: 1180rpx;
+  background-image: url('http://airing.ursb.me/image/cover/chunqibg.jpg');
+  background-size: 100% 100%;
 }
 
 .logo {
-  width: 304rpx;
-  height: 304rpx;
-  margin-top: 118rpx;
+  width: 650rpx;
+  height: 180rpx;
+  margin-top: 250rpx;
 }
 
 .name {
@@ -21,7 +22,9 @@
 }
 
 .button-container {
-  margin-top: 120rpx
+  margin-bottom: 300rpx;
+  display: flex;
+  flex-direction: row;
 }
 
 .button-search {
@@ -40,4 +43,9 @@
   font-family: Songti TC;
   font-size: 32rpx;
   color: #585858;
+}
+
+.image-search {
+  width: 180rpx;
+  height: 180rpx;
 }

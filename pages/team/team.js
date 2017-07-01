@@ -176,4 +176,9 @@ Page({
       })
     }
   },
+  showClause: function() {
+    wx.navigateTo({
+      url: './clause',
+    })
+  }
 })

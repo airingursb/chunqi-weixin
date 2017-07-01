@@ -1,21 +1,16 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container{
+    height:1180rpx;
+    -moz-background-size:100% 100%;
+    background: url('http://airing.ursb.me/image/cover/UI-0.jpg');
+    background-size: 100% 100%;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.button {
+  margin-top: 200rpx;
+  margin-left: -200rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
+.logo {
+  width: 320rpx;
+  height: 320rpx;
 }
